@@ -1,0 +1,85 @@
+{
+  "name": "react-native-cache",
+  "version": "1.0.0",
+  "description": "A utility to gain 100% control over cached resources such as images, videos, REST resources...",
+  "main": "lib/index.js",
+  "files": [
+    "lib/**/*"
+  ],
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "test": "jest",
+    "autolint": "eslint --ext .ts --ext .tsx 'src/' --fix",
+    "build": "npm run build:clean; npm run build:types && npm run build:js && npm run build:api",
+    "build:clean": "rimraf lib",
+    "build:types": "tsc --project tsconfig.json",
+    "build:js": "babel src --config-file ./babel.config.js --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",
+    "build:docs": "api-documenter markdown --input-folder temp --output-folder docs",
+    "build:api": "api-extractor run --local --verbose",
+    "prepare": "npm run build",
+    "release": "standard-version",
+    "semantic-release": "semantic-release"
+  },
+  "author": "Jules Sam. Randolph <jules.sam.randolph@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "react native",
+    "image",
+    "store",
+    "offline",
+    "cache"
+  ],
+  "devDependencies": {
+    "@babel/cli": "^7.8.3",
+    "@babel/core": "^7.8.3",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-decorators": "^7.8.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/plugin-transform-async-to-generator": "^7.8.3",
+    "@babel/plugin-transform-destructuring": "^7.8.3",
+    "@babel/plugin-transform-flow-strip-types": "^7.8.3",
+    "@babel/plugin-transform-modules-commonjs": "^7.8.3",
+    "@babel/plugin-transform-parameters": "^7.8.3",
+    "@babel/plugin-transform-react-jsx": "^7.8.3",
+    "@babel/plugin-transform-spread": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/preset-typescript": "^7.8.3",
+    "@babel/runtime": "^7.8.3",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@microsoft/api-documenter": "^7.7.11",
+    "@microsoft/api-extractor": "^7.7.7",
+    "@types/jest": "^24.9.1",
+    "@types/react": "^16.9.19",
+    "@types/react-native": "^0.61.4",
+    "@typescript-eslint/eslint-plugin": "^2.17.0",
+    "@typescript-eslint/parser": "^2.17.0",
+    "@typeskill/eslint-config": "^3.0.2",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.18.0",
+    "eslint-plugin-react-hooks": "^2.3.0",
+    "husky": "^4.2.1",
+    "jest": "^25.1.0",
+    "metro-react-native-babel-preset": "^0.58.0",
+    "prettier": "^1.19.1",
+    "rimraf": "^3.0.0",
+    "semantic-release": "^16.0.3",
+    "standard-version": "^7.1.0",
+    "typescript": "^3.7.5"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-native": "*"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  }
+}
