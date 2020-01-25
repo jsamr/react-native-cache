@@ -1,5 +1,6 @@
 .idea
 .jest
+.vscode
 .watchmanconfig
 temp
 node_modules
