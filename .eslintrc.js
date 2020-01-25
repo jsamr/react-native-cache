@@ -1,8 +1,11 @@
 module.exports = {
   plugins: [
-    "react-hooks"
+    'react-hooks',
   ],
   extends: [
-    "@typeskill/eslint-config", // Uses the recommended rules from typeskill
+    '@typeskill/eslint-config', // Uses the recommended rules from typeskill
   ],
+  parserOptions: {
+    project: 'tsconfig.json'
+  }
 }
