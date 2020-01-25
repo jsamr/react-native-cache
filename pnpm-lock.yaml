@@ -1,3 +1,5 @@
+dependencies:
+  fp-ts: 2.4.2
 devDependencies:
   '@babel/cli': 7.8.3_@babel+core@7.8.3
   '@babel/core': 7.8.3
@@ -4392,6 +4394,10 @@ packages:
       node: '>= 0.12'
     resolution:
       integrity: sha512-1lLKB2Mu3aGP1Q/2eCOx0fNbRMe7XdwktwOruhfqqd0rIJWwN4Dh+E3hrPSlDCXnSR7UtZ1N38rVXm+6+MEhJQ==
+  /fp-ts/2.4.2:
+    dev: false
+    resolution:
+      integrity: sha512-/6dNmbu2CRhwR+/OpjLYT3OAlIlyrnY1qjbGDeyYkisTqQfbIdWL1P4sn28yKhcBLcfIvjo9614sfo0EKscOMA==
   /fragment-cache/0.2.1:
     dependencies:
       map-cache: 0.2.2
@@ -10168,6 +10174,7 @@ specifiers:
   eslint-plugin-prettier: ^3.1.2
   eslint-plugin-react: ^7.18.0
   eslint-plugin-react-hooks: ^2.3.0
+  fp-ts: ^2.4.2
   husky: ^4.2.1
   jest: ^25.1.0
   metro-react-native-babel-preset: ^0.58.0

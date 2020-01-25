@@ -83,5 +83,8 @@
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
+  },
+  "dependencies": {
+    "fp-ts": "^2.4.2"
   }
 }
