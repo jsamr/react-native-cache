@@ -23,12 +23,8 @@ export interface RequiredCacheConfig {
    */
   FileSystemDriver: FileSystemDriverClass
   /**
-   * A `class` which produces `StorageDriverInterface` instances.
+   * A `class` which produces {@link StorageDriverInterface} instances.
    * This driver is used to persist a file registry.
-   *
-   * @see StorageDriverInterface
-   * @see StorageDriverClass
-   * @see URICacheRegistry
    *
    */
   StorageDriver: StorageDriverClass<any>

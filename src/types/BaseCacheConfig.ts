@@ -54,9 +54,9 @@ export interface BaseCacheConfig {
    */
   maxParallelDownloads: number
   /**
-   * You can store meta-info such as Size from headers. And retrieve it later with {@link Cache.getMetaInfo} method.
+   * You can store meta-info such as Size from headers.
    *
-   * @defaultValue `undefined`, no meta-info extracted
+   * @defaultValue `() => void`, a function returning nothing
    */
   resourceMetaInfoExtractor: <T>(headers: Headers) => T
 }

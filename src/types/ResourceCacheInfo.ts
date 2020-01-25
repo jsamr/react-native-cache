@@ -1,10 +1,10 @@
-import { URIVersionTag } from './URIVersionTag'
+import { ResourceVersionTag } from './ResourceVersionTag'
 import { HTTPHeaders } from './HTTPHeaders'
 
 /**
  * @public
  */
-export interface URICacheModel<T = any> {
+export interface ResourceCacheInfo<T = any> {
   uri: string
   headers?: HTTPHeaders
   registered: boolean
@@ -12,7 +12,8 @@ export interface URICacheModel<T = any> {
   expired: boolean
   fetching: boolean
   localFileName: string
-  versionTag: URIVersionTag | null
+  versionTag: ResourceVersionTag | null
   error: Error | null
+  mimeType: string
   metaInfo: T | null
 }

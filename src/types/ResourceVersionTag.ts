@@ -1,7 +1,7 @@
 /**
  * @public
  */
-export interface URIVersionTag {
+export interface ResourceVersionTag {
   type: 'ETag' | 'LastModified'
   value: string
 }
