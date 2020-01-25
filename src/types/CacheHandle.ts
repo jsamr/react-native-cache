@@ -31,10 +31,10 @@ export interface CacheHandle {
    * @param onProgress - A callback to be invoked after each preloading.
    * @returns A Promise resolving to a list of events related to each preloading.
    */
-  preloadResourcesAsync(resources: TargetResource[], onProgress?: ProgressCallback): Promise<ResourceCacheEvent[]>
+  preloadResourcesBatchAsync(resources: TargetResource[], onProgress?: ProgressCallback): Promise<ResourceCacheEvent[]>
 
   /**
-   * **Asynchronously** delete an existing image from the Cache.
+   * **Asynchronously** delete an existing resource from the Cache.
    * Does nothing if the provided resource have no matching entry in registry.
    *
    * @param resource - The resource to delete.
@@ -42,21 +42,29 @@ export interface CacheHandle {
   deleteResourceAsync(resource: TargetResource): Promise<ResourceCacheEvent>
 
   /**
-   * **Asynchronously** delete all resources from the Cache.
+   * **Asynchronously** and parallely delete provided cached resources.
+   *
+   * @param resources - The resources to delete.
+   * @param onProgress - A callback to be invoked after each deletion.
+   */
+  deleteResourcesBatchAsync(onProgress?: ProgressCallback): Promise<ResourceCacheEvent[]>
+
+  /**
+   * **Asynchronously** and parallely delete all resources from the Cache.
    *
    * @param onProgress - A callback to be invoked after each deletion.
    */
   deleteAllResourcesAsync(onProgress?: ProgressCallback): Promise<ResourceCacheEvent[]>
 
   /**
-   * **Asynchronously** delete all image which are stale from the Cache.
+   * **Asynchronously** and parallely delete all resources which are stale from the Cache.
    *
    * @param onProgress - A callback to be invoked after each deletion.
    */
   deleteAllStaleResourcesAsync(onProgress?: ProgressCallback): Promise<ResourceCacheEvent[]>
 
   /**
-   * **Asynchronously** revalidate a stored resource *if previously registered*.
+   * **Asynchronously** revalidate a cached resource *if previously registered*.
    *
    * @remarks Revalidation is done with:
    *
@@ -72,7 +80,23 @@ export interface CacheHandle {
   revalidateResourceAsync(resource: TargetResource): Promise<ResourceCacheEvent>
 
   /**
-   * **Asynchronously** revalidate all images *which were previously registered*.
+   * **Asynchronously** and parallely revalidate provided cached resources *if previously registered*.
+   *
+   * @remarks Revalidation is done with:
+   *
+   * - file existence checking;
+   * - conditionnal HTTP requests, with `If-None-Match` or `If-Modified-Since` headers.
+   *
+   * @param resources - The resources to revalidate.
+   * @param onProgress - A callback to be invoked after each revalidation.
+   */
+  revalidateResourcesBatchAsync(
+    resources: TargetResource[],
+    onProgress?: ProgressCallback,
+  ): Promise<ResourceCacheEvent[]>
+
+  /**
+   * **Asynchronously** revalidate all resources *which were previously registered*.
    *
    * @remarks Revalidation is done with:
    *
@@ -88,7 +112,7 @@ export interface CacheHandle {
   revalidateAllResourcesAsync(onProgress?: ProgressCallback): Promise<ResourceCacheEvent[]>
 
   /**
-   * **Asynchronously** revalidate all stale images in the store.
+   * **Asynchronously** revalidate all stale resources in the store.
    *
    * @remarks Revalidation is done with:
    *
@@ -105,5 +129,5 @@ export interface CacheHandle {
    * @param resource - The ressource to lookup.
    * @returns An object describing the cache state of a resource.
    */
-  getResourceInfo(resource: TargetResource): ResourceCacheInfo
+  getResourceInfo<MetaInfoShape = any>(resource: TargetResource): ResourceCacheInfo<MetaInfoShape>
 }

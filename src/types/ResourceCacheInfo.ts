@@ -4,7 +4,7 @@ import { HTTPHeaders } from './HTTPHeaders'
 /**
  * @public
  */
-export interface ResourceCacheInfo<T = any> {
+export interface ResourceCacheInfo<MetaInfoShape = any> {
   uri: string
   headers?: HTTPHeaders
   registered: boolean
@@ -15,5 +15,5 @@ export interface ResourceCacheInfo<T = any> {
   versionTag: ResourceVersionTag | null
   error: Error | null
   mimeType: string
-  metaInfo: T | null
+  metaInfo: MetaInfoShape | null
 }

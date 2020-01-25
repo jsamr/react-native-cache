@@ -15,5 +15,5 @@ export interface DownloadManagerInterface {
    *
    * @public
    */
-  downloadImage(remoteURI: string, localURI: string, headers: Record<string, string>): Promise<DownloadReport>
+  downloadResource(remoteURI: string, localURI: string, headers: Record<string, string>): Promise<DownloadReport>
 }
