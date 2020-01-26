@@ -4,7 +4,7 @@ import { ResourceCacheRegistry } from './ResourceCacheRegistry'
  * @public
  */
 export interface StorageDriverInterface {
-  load(): Promise<ResourceCacheRegistry | null>
+  load(defaultRegistry: ResourceCacheRegistry): Promise<ResourceCacheRegistry>
   save(registry: ResourceCacheRegistry): Promise<void>
   clear(): Promise<void>
 }

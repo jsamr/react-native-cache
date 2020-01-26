@@ -7,6 +7,10 @@ import { StorageDriverClass } from './StorageDriverClass'
  */
 export interface RequiredCacheConfig {
   /**
+   * The name of the cache.
+   */
+  name: string
+  /**
    * A `class` which produces `DownloadManagerInterface` instances.
    * This manager is used to download resource files.
    *
@@ -27,5 +31,5 @@ export interface RequiredCacheConfig {
    * This driver is used to persist a file registry.
    *
    */
-  StorageDriver: StorageDriverClass<any>
+  StorageDriver: StorageDriverClass
 }
