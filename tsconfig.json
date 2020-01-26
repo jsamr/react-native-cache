@@ -9,11 +9,7 @@
       "lib": ["es5", "es6"],
       "allowSyntheticDefaultImports": true,
       "esModuleInterop": true,
-      "downlevelIteration": true,
-      "baseUrl": "./src",
-      "paths": {
-        "@src/*": ["*"]
-      }
+      "downlevelIteration": true
     },
     "include": ["src"],
     "exclude": ["node_modules"]
