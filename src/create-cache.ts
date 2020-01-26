@@ -8,7 +8,7 @@ import { TargetResource } from './types/TargetResource'
 import { ResourceHandle } from './types/ResourceHandle'
 import { ResourceCacheInfo } from './types/ResourceCacheInfo'
 
-const defaultCache: BaseCacheConfig = {
+const defaultCacheConfig: BaseCacheConfig = {
   debug: __DEV__,
   defaultMaxAge: 86000,
   autoRemoveStaleResources: false,
@@ -53,7 +53,7 @@ interface Cache {
  * ```
  */
 export function createCache(config: UserCacheConfig): Cache {
-  const cache: CacheConfig = { ...defaultCache, ...config }
+  const cache: CacheConfig = { ...defaultCacheConfig, ...config }
   return (cache as unknown) as any
   // const handle: CacheHandle = {
   //   //
