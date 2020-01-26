@@ -1,19 +1,34 @@
 import { ResourceVersionTag } from './ResourceVersionTag'
-import { HTTPHeaders } from './HTTPHeaders'
 
 /**
  * @public
  */
-export interface ResourceCacheInfo<MetaInfoShape = any> {
+export interface ResourceCacheInfoBase {
   uri: string
-  headers?: HTTPHeaders
   registered: boolean
-  fileExists: boolean
-  expired: boolean
-  fetching: boolean
+}
+
+/**
+ * @public
+ */
+export interface UnregisteredResourceCacheInfo extends ResourceCacheInfoBase {
+  registered: false
+}
+
+/**
+ * @public
+ */
+export interface RegisteredResourceCacheInfo<MetaInfoShape = any> extends ResourceCacheInfoBase {
+  registered: true
   localFileName: string
   versionTag: ResourceVersionTag | null
-  error: Error | null
   mimeType: string
   metaInfo: MetaInfoShape | null
 }
+
+/**
+ * @public
+ */
+export type ResourceCacheInfo<MetaInfoShape = any> =
+  | RegisteredResourceCacheInfo<MetaInfoShape>
+  | UnregisteredResourceCacheInfo
