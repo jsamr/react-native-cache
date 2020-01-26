@@ -1,5 +1,6 @@
 dependencies:
   fp-ts: 2.4.2
+  rxjs: 6.5.4
 devDependencies:
   '@babel/cli': 7.8.3_@babel+core@7.8.3
   '@babel/core': 7.8.3
@@ -34,10 +35,11 @@ devDependencies:
   eslint-plugin-react-hooks: 2.3.0_eslint@6.8.0
   husky: 4.2.1
   jest: 25.1.0
+  jest-marbles: 2.5.1_rxjs@6.5.4
   metro-react-native-babel-preset: 0.58.0_@babel+core@7.8.3
   prettier: 1.19.1
-  react: 16.12.0
-  react-native: 0.61.5_89ebdb12c299da18191faee08bd223f6
+  react: 16.9.0
+  react-native: 0.61.5_react-native@0.61.5+react@16.9.0
   rimraf: 3.0.0
   semantic-release: 16.0.3_semantic-release@16.0.3
   standard-version: 7.1.0
@@ -1716,7 +1718,7 @@ packages:
       open: 6.4.0
       ora: 3.4.0
       plist: 3.0.1
-      react-native: 0.61.5_89ebdb12c299da18191faee08bd223f6
+      react-native: 0.61.5_react-native@0.61.5+react@16.9.0
       semver: 6.3.0
       serve-static: 1.14.1
       shell-quote: 1.6.1
@@ -5663,6 +5665,29 @@ packages:
       node: '>= 8.3'
     resolution:
       integrity: sha512-3xRI264dnhGaMHRvkFyEKpDeaRzcEBhyNrOG5oT8xPxOyUAblIAQnpiR3QXu4wDor47MDTiHbiFcbypdLcLW5w==
+  /jest-marbles/2.5.1_rxjs@6.5.4:
+    dependencies:
+      jest-diff: 24.9.0
+      jest-matcher-utils: 24.9.0
+      rxjs: 6.5.4
+    dev: true
+    engines:
+      node: '>=6.11.5'
+    peerDependencies:
+      rxjs: ^6.0.0
+    resolution:
+      integrity: sha512-BsHEqrHLMTsfqagWeWJ+vJrSPNcn7vIFpx+e4G/sKGnx8JLDniRBbiwtHfUP5yoQtXDi+56I6atr5WdgJUknmw==
+  /jest-matcher-utils/24.9.0:
+    dependencies:
+      chalk: 2.4.2
+      jest-diff: 24.9.0
+      jest-get-type: 24.9.0
+      pretty-format: 24.9.0
+    dev: true
+    engines:
+      node: '>= 6'
+    resolution:
+      integrity: sha512-OZz2IXsu6eaiMAwe67c1T+5tUAtQyQx27/EMEkbFAGiw52tB9em+uGbzpcgYVpA8wl0hlxKPZxrly4CXU/GjHA==
   /jest-matcher-utils/25.1.0:
     dependencies:
       chalk: 3.0.0
@@ -8018,7 +8043,7 @@ packages:
     dev: true
     resolution:
       integrity: sha512-rPCkf/mWBtKc97aLL9/txD8DZdemK0vkA3JMLShjlJB3Pj3s+lpf1KaBzMfQrAmhMQB0n1cU/SUGgKKBCe837Q==
-  /react-native/0.61.5_89ebdb12c299da18191faee08bd223f6:
+  /react-native/0.61.5_react-native@0.61.5+react@16.9.0:
     dependencies:
       '@babel/runtime': 7.8.3
       '@react-native-community/cli': 3.0.4_react-native@0.61.5
@@ -8043,7 +8068,7 @@ packages:
       pretty-format: 24.9.0
       promise: 7.3.1
       prop-types: 15.7.2
-      react: 16.12.0
+      react: 16.9.0
       react-devtools-core: 3.6.3
       react-refresh: 0.4.2
       regenerator-runtime: 0.13.3
@@ -8065,7 +8090,7 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-kv5QlFFSZWo7OlJFNYbxRtY66JImuP2LcrFgyJfQaf85gSP+byzG21UbDQEYjU7f//ny8rwiEkO6py2Y+fEgAQ==
-  /react/16.12.0:
+  /react/16.9.0:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
@@ -8074,7 +8099,7 @@ packages:
     engines:
       node: '>=0.10.0'
     resolution:
-      integrity: sha512-fglqy3k5E+81pA8s+7K0/T3DBCF0ZDOher1elBFzF7O6arXJgzyu/FW+COxFvAWXJoJN9KIZbT2LXlukwphYTA==
+      integrity: sha512-+7LQnFBwkiw+BobzOF6N//BdoNw0ouwmSJTEm9cglOOmsg/TMiFHZLe2sEoN5M7LgJTj9oHH0gxklfnQe66S1w==
   /read-pkg-up/1.0.1:
     dependencies:
       find-up: 1.1.2
@@ -8546,7 +8571,6 @@ packages:
   /rxjs/6.5.4:
     dependencies:
       tslib: 1.10.0
-    dev: true
     engines:
       npm: '>=2.0.0'
     resolution:
@@ -9507,7 +9531,6 @@ packages:
     resolution:
       integrity: sha1-n5up2e+odkw4dpi8v+sshI8RrbM=
   /tslib/1.10.0:
-    dev: true
     resolution:
       integrity: sha512-qOebF53frne81cf0S9B41ByenJ3/IuH8yJKngAX35CmiZySA0khhkovshKK+jGCaMnVomla7gVlIcc3EvKPbTQ==
   /tsutils/3.17.1_typescript@3.7.5:
@@ -10177,11 +10200,13 @@ specifiers:
   fp-ts: ^2.4.2
   husky: ^4.2.1
   jest: ^25.1.0
+  jest-marbles: ^2.5.1
   metro-react-native-babel-preset: ^0.58.0
   prettier: ^1.19.1
-  react: ^16.12.0
+  react: 16.9.0
   react-native: ^0.61.5
   rimraf: ^3.0.0
+  rxjs: ^6.5.4
   semantic-release: ^16.0.3
   standard-version: ^7.1.0
   typescript: ^3.7.5
