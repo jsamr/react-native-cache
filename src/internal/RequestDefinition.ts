@@ -1,9 +1,7 @@
 import { ResourceDefinition } from '../types/ResourceDefinition'
-import { ResourceCacheInfo } from '../types/ResourceCacheInfo'
 import { TaskType } from './TaskType'
 
-export interface TaskPayload {
+export interface RequestDefinition {
   type: TaskType
   resource: ResourceDefinition
-  info: ResourceCacheInfo
 }
