@@ -20,9 +20,9 @@ class StorageDriver implements StorageDriverInterface {
 function assembleInput(overwrites?: Partial<EngineInput>): EngineInput {
   const driver = new StorageDriver()
   return {
-    deleteRequests$: empty(),
+    // deleteRequests$: empty(),
     preloadRequests$: empty(),
-    revalidateRequests$: empty(),
+    // revalidateRequests$: empty(),
     environment$: from([{}]),
     registry$: defer(() => from(driver.load({}))),
     ...overwrites,
@@ -33,10 +33,19 @@ describe('engine/build-tasks', () => {
   it('Should wait for registry prior to triggering tasks', () => {
     const inputs = assembleInput({
       preloadRequests$: hot('^A--B|', { A: 'https://A.A', B: 'https://B.B' }),
-      registry$: hot('^-A--|', { A: {} }),
+      registry$: hot('^-a--|', { a: {} }),
     })
     const engine = buildTasks(inputs)
     const expected = cold('--A-B|', { A: { uri: 'https://A.A' }, B: { uri: 'https://B.B' } })
+    expect(engine.preloadTasks$).toBeObservable(expected)
+  })
+  it('Should emit only when requests emit', () => {
+    const inputs = assembleInput({
+      preloadRequests$: hot('^A------|', { A: 'https://A.A' }),
+      registry$: hot('^-a--b--|', { a: {}, b: {} }),
+    })
+    const engine = buildTasks(inputs)
+    const expected = cold('--A-----|', { A: { uri: 'https://A.A' } })
     expect(engine.preloadTasks$).toBeObservable(expected)
   })
 })
