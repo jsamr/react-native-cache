@@ -1,7 +1,6 @@
 import { cold, hot } from 'jest-marbles'
 import { lazyWith } from '../lazy-with'
 
-// https://rxviz.com/v/5o1e6K9o
 describe('rxjs/lazy-with', () => {
   it('should wait for trigger before emitting', () => {
     const source = cold('A-------|')
